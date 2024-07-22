@@ -91,8 +91,8 @@ export class UserInterface extends Construct {
       oauth: props.config.cognitoFederation?.enabled
           ?  {
               domain: `${props.config.cognitoFederation.cognitoDomain}.auth.${cdk.Aws.REGION}.amazoncognito.com`,
-              redirectSignIn: `https://${this.publishedDomain}`,
-              redirectSignOut: `https://${this.publishedDomain}`,
+              redirectSignIn: `https://${props.config.domain? props.config.domain : this.publishedDomain}`,
+              redirectSignOut: `https://${props.config.domain? props.config.domain : this.publishedDomain}`,
               Scopes: ["email","openid"],
               responseType: "code",
             }
